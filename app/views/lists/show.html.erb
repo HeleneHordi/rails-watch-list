@@ -1,11 +1,15 @@
-<h1><%= @list.name %></h1>
+<h1 class="list-title"><%= @list.name %></h1>
+
+<% if @list.image_url.present? %>
+  <img src="<%= @list.image_url %>" alt="<%= @list.name %>" class="img-fluid">
+<% end %>
 
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li>
       <%= link_to bookmark.movie.title, movie_path(bookmark.movie) %>
       <%= bookmark.comment %>
-      <%= link_to 'Remove', bookmark_path(bookmark), data: {turbo_method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Remove', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </li>
   <% end %>
 </ul>

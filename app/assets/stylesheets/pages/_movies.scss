@@ -1,0 +1,23 @@
+// Specific CSS for your home-page
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.alert {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.btn-primary {
+  background-color: #96a4d7;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #535ac0;
+  color: white;
+}

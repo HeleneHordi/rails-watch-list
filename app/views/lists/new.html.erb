@@ -1,12 +1,29 @@
 <h1>New List</h1>
 
-<%= simple_form_for @list do |f| %>
+<%= form_with(model: @list, local: true) do |form| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+      <ul>
+        <% @list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
-    <%= f.input :name, input_html: { class: 'form-control' } %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit, 'Create List', class: 'btn btn-primary' %>
+    <%= form.submit 'Create List', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
